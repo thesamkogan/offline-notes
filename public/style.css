@@ -1,0 +1,45 @@
+body {
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+label {
+  display: block;
+}
+
+nav a {
+  display: inline-block;
+  margin: 1em;
+}
+
+form div {
+  margin: 1em;
+  display: inline-block;
+}
+
+Border {
+  border: 1px;
+  color: black;
+  background: red;
+}
+.card-main {
+  display: flex;
+}
+
+.bullet {
+  display: 'inline-block';
+  margin: '0 2px';
+  transform: 'scale(0.8)';
+}
+
+.title {
+  margin-bottom: 16;
+  font-size: 14;
+}
+
+.pos {
+  margin-bottom: 12,
+}
