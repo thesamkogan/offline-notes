@@ -3,10 +3,12 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import Button from '@material-ui/core/Button';
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
+
+const Navbar = ({ user, handleClick, isLoggedIn }) => (
   <div>
-    <h1>BOILERMAKER</h1>
+    <h1>{user ? user + '\'s notes' : 'Offline Notes!'}</h1>
     <nav>
       {isLoggedIn ? (
         <div>
@@ -19,8 +21,8 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+          <Button href="/login">Login</Button>
+          <Button href="/signup">Sign Up</Button>
         </div>
       )}
     </nav>
@@ -33,6 +35,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
  */
 const mapState = state => {
   return {
+    user: state.user.email,
     isLoggedIn: !!state.user.id
   }
 }

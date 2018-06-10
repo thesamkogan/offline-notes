@@ -2,7 +2,7 @@ const User = require('./user')
 const Note = require('./note')
 const Share = require('./share')
 
-// Note.hasMany(Share)
+Note.hasMany(Share)
 Note.belongsTo(User)
 User.hasMany(Note)
 // User.hasMany(Share)

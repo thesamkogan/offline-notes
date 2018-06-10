@@ -4,65 +4,54 @@ import {
   connect
 } from 'react-redux'
 // import { Draft } from './draft'
-// import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import {
   fetchNotes,
   fetchSharedNotes
 } from '../store';
-import {
-  NoteThumb
-}
-from './NoteThumb'
+import { NoteThumb } from './NoteThumb'
+import EditModalWrapped from './editModal'
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import AddIcon from '@material-ui/icons/Add';
+import { Avatar } from '@material-ui/core';
 
-
-// import fetchNotes from '../store/strnote'
-
-// const styles = {
-//   card: {
-//     minWidth: 275,
-//     maxWidth: 100
-//   },
-//   bullet: {
-//     display: 'inline-block',
-//     margin: '0 2px',
-//     transform: 'scale(0.8)',
-//   },
-//   title: {
-//     marginBottom: 16,
-//     fontSize: 14,
-//   },
-//   pos: {
-//     marginBottom: 12,
-//   },
-// };
-
+const styles = theme => ({
+  root: theme.mixins.gutters({
+    paddingTop: 16,
+    paddingBottom: 16,
+    marginTop: theme.spacing.unit * 3,
+  }),
+});
 /**
  * COMPONENT
  */
 export class UserHome extends React.Component {
-    constructor() {
-      super()
-    }
 
     componentDidMount() {
       this.props.loadInitialData()
     }
 
     render() {
-    let { shares } = this.props
-
+    let { note, share } = this.props
 
       return (
-        <div className = "card-main" > {
-          this.props.note.length && this.props.note.map(
-            notes => ( <NoteThumb key = {notes.id} note = {notes} shares = {shares} /> )
+        <div className = "card-main" >
+
+
+
+        {
+          note.length && note.map(
+            notes => ( <NoteThumb key = {notes.id} note = {notes} readonly={false} /> )
             )
           }
-          <ol>{
-          shares &&
-          <li>{this.props.shares}</li>
+          {
+          share.length && share.map(
+              shares => ( <NoteThumb key = {shares.id} note = {shares.note} shares={shares} readonly={shares.readonly} /> )
+              )
           }
-          </ol>
+
+
         </div>
         )
       }
@@ -74,10 +63,10 @@ export class UserHome extends React.Component {
     const mapState = ({
       user,
       note,
-      shares
+      share
     }) => ({
       note,
-      shares,
+      share,
       isLoggedIn: !!user.id
     });
     const mapDispatch = (dispatch) => {
@@ -92,5 +81,6 @@ export class UserHome extends React.Component {
 
 
     // export default connect(mapState, mapDispatch).withStyles(styles)(UserHome);
-    // export default withStyles(styles)(connect(mapState, mapDispatch)(UserHome));
-    export default connect(mapState, mapDispatch)(UserHome)
+    const UserHomeStyle =  withStyles(styles)(UserHome);
+    export default connect(mapState, mapDispatch)(UserHomeStyle)
+

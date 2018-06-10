@@ -42,11 +42,11 @@ export const deleteNote = id =>
     .catch(err => console.log(err))
 
 
-export const updateNote = note =>
+export const updateNote = (id, note) =>
   dispatch =>
     axios
-      .put('/notes', note)
-      .then(() => dispatch(editNote(note)))
+      .put(`/${id}`, note)
+      .then(res => dispatch(editNote(res.data)))
       .catch(err => console.log(err))
 
 export const addANote = note =>

@@ -22,7 +22,7 @@ router.get('/', async (req, res, next) => {
         userId: req.session.passport.user,
 
       },
-      include: [{model: Note}]
+      include: [{model: Note, include: [{model: User}]}]
     });
     console.log('shares, ', shares);
     res.json(shares);

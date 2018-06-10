@@ -25,9 +25,9 @@ Border {
   color: black;
   background: red;
 }
-.card-main {
+/* .card-main {
   display: flex;
-}
+} */
 
 .bullet {
   display: 'inline-block';
@@ -42,4 +42,8 @@ Border {
 
 .pos {
   margin-bottom: 12,
+}
+
+.modal {
+
 }
