@@ -24,7 +24,6 @@ router.get('/', async (req, res, next) => {
       },
       include: [{model: Note, include: [{model: User}]}]
     });
-    console.log('shares, ', shares);
     res.json(shares);
   } catch (err) {
     next(err);

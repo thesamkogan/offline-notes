@@ -45,7 +45,7 @@ export const deleteNote = id =>
 export const updateNote = (id, note) =>
   dispatch =>
     axios
-      .put(`/${id}`, note)
+      .put(`/api/notes/${id}`, note)
       .then(res => dispatch(editNote(res.data)))
       .catch(err => console.log(err))
 

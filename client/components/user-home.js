@@ -9,7 +9,7 @@ import {
   fetchNotes,
   fetchSharedNotes
 } from '../store';
-import { NoteThumb } from './NoteThumb'
+import NoteThumb from './NoteThumb'
 import EditModalWrapped from './editModal'
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -37,9 +37,6 @@ export class UserHome extends React.Component {
 
       return (
         <div className = "card-main" >
-
-
-
         {
           note.length && note.map(
             notes => ( <NoteThumb key = {notes.id} note = {notes} readonly={false} /> )

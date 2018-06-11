@@ -28,20 +28,20 @@ router.get('/', async (req, res, next) => {
 });
 
 router.put('/:id', (req, res, next) => {
+  console.log('PUT')
   req.note
     .update(req.body)
-    .then(updatedNote => Note.findById(updatedNote.id, {
-      include: [{model: User}, {model: Share, include: [{model: User}]}]
-    }))
-    .then(fullNote => {
-      res.json(fullNote)
-    })
+    .then(fullNote => res.json(fullNote))
     .catch(next)
 });
 
-router.post('/notes/add', (req, res, next) => {
-  Note.create(req.body)
+router.post('/', (req, res, next) => {
+  Note
+  .create(req.body)
+  .then(newNote => res.json(newNote))
+  .catch(next)
 })
+
 
 // router.delete('/notes/delete', (req, res, next) => {
 //   Note.destroy(req.body)

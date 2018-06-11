@@ -2,10 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-
+// import Button from '@material-ui/core/Button';
+// import TextField from '@material-ui/core/TextField';
+import {Input, Button} from 'react-materialize'
 
 /**
  * COMPONENT
@@ -15,26 +14,24 @@ const AuthForm = (props) => {
 
   return (
     <div style={{flexGrow: 1}}>
-    <Grid container spacing={24}>
-        <Grid item xs={12}>
+
 
       <form onSubmit={handleSubmit} name={name}>
         <div>
           <label htmlFor="email"><small>Email</small></label>
-          <TextField name="email" type="text" />
+          <Input name="email" type="text" />
         </div>
         <div>
           <label htmlFor="password"><small>Password</small></label>
-          <TextField name="password" type="password" />
+          <Input name="password" type="password" />
         </div>
         <div>
-          <Button type="submit">{displayName}</Button>
+          <Button waves="light" type="submit">{displayName}</Button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <Button href="/auth/google">{displayName} with Google</Button>
-        </Grid>
-    </Grid>
+      <Button waves="light" href="/auth/google">{displayName} with Google</Button>
+
     </div>
   )
 }
@@ -80,9 +77,9 @@ export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
 /**
  * PROP TYPES
  */
-AuthForm.propTypes = {
-  name: PropTypes.string.isRequired,
-  displayName: PropTypes.string.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  error: PropTypes.object
-}
+// AuthForm.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   displayName: PropTypes.string.isRequired,
+//   handleSubmit: PropTypes.func.isRequired,
+//   error: PropTypes.object
+// }
